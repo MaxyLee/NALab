@@ -1,0 +1,17 @@
+xk = 0.6;
+delta = 1e-4;
+lambda0 = 1;
+xkp = xk - lambda0 * f1(xk) / df1(xk);
+while abs(f1(xk)) > delta || abs(xkp-xk) > delta
+    s=f1(xk) / df1(xk);
+    xkp = xk - s;
+    lambda = lambda0;
+    while double(abs(f1(xkp))) >= double(abs(f1(xk)))
+        xkp = xk - lambda * s;
+        lambda = lambda / 2;
+    end
+    xk = xkp;
+    disp(lambda);
+    disp(xkp);
+end
+disp(x1);
